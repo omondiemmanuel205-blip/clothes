@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manu Cruise Fashion | Nakuru's Premier Boutique</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --gold: #b8972c;
+  --gold2: #d4af37;
+  --gold-light: #e8c84a;
+  --gold-pale: #fdf6e3;
+  --black: #0c0c0c;
+  --dark: #131313;
+  --dark2: #1c1c1c;
+  --charcoal: #2d2d2d;
+  --mid: #6b6b6b;
+  --light: #f5f0e8;
+  --white: #ffffff;
+  --red: #c0392b;
+  --shadow: 0 12px 48px rgba(0,0,0,0.14);
+  --tr: all 0.32s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--light);color:var(--black);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:4px;}
+img{display:block;}
+
+/* ── ANNOUNCE BAR ── */
+.announce{background:var(--black);color:rgba(255,255,255,.7);font-size:12px;letter-spacing:1.2px;text-align:center;padding:9px 16px;}
+.announce b{color:var(--gold-light);}
+
+/* ── NAVBAR ── */
+nav{background:var(--white);position:sticky;top:0;z-index:900;height:70px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(184,151,44,.18);box-shadow:0 2px 16px rgba(0,0,0,.06);}
+.logo-wrap{display:flex;flex-direction:column;}
+.logo-wrap .brand{font-family:'Playfair Display',serif;font-size:21px;font-weight:900;color:var(--black);letter-spacing:.5px;line-height:1;}
+.logo-wrap .sub{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--charcoal);position:relative;transition:var(--tr);}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold2);transition:var(--tr);}
+.nav-links a:hover{color:var(--gold);}.nav-links a:hover::after{width:100%;}
+.nav-right{display:flex;gap:14px;align-items:center;}
+.nav-right button{background:none;border:none;cursor:pointer;color:var(--charcoal);font-size:17px;transition:var(--tr);position:relative;}
+.nav-right button:hover{color:var(--gold);}
+.badge{position:absolute;top:-7px;right:-7px;background:var(--gold);color:var(--black);border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;}
+.ham span{width:22px;height:2px;background:var(--black);transition:var(--tr);}
+
+/* ── HERO ── */
+.hero{position:relative;height:93vh;min-height:580px;display:flex;align-items:center;overflow:hidden;}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center top;opacity:0;transition:opacity 1.4s ease;}
+.hero-slide.on{opacity:1;}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(12,12,12,.76) 0%,rgba(12,12,12,.22) 55%,transparent 100%);}
+.hero-content{position:relative;z-index:2;padding:0 80px;max-width:660px;animation:fadeUp .9s .2s both;}
+.hero-content .eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-light);font-weight:500;margin-bottom:14px;}
+.hero-content h1{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,74px);color:var(--white);line-height:1.06;font-weight:900;margin-bottom:18px;}
+.hero-content h1 em{font-style:italic;color:var(--gold-light);}
+.hero-content p{font-size:15px;color:rgba(255,255,255,.78);line-height:1.75;margin-bottom:32px;font-weight:300;max-width:460px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-gold{background:var(--gold2);color:var(--black);padding:13px 34px;border:none;cursor:pointer;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:var(--tr);text-decoration:none;display:inline-block;}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.4);}
+.btn-ghost{background:transparent;color:var(--white);padding:13px 34px;border:1.5px solid rgba(255,255,255,.55);cursor:pointer;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:var(--tr);text-decoration:none;display:inline-block;}
+.btn-ghost:hover{border-color:var(--gold-light);color:var(--gold-light);}
+.hero-dots{position:absolute;bottom:28px;left:80px;z-index:3;display:flex;gap:8px;}
+.dot{width:26px;height:2px;background:rgba(255,255,255,.3);cursor:pointer;transition:var(--tr);}
+.dot.on{background:var(--gold2);width:46px;}
+
+/* ── SECTION HEADER ── */
+.sh{text-align:center;margin-bottom:50px;}
+.sh .eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px;}
+.sh h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--black);}
+.sh p{font-size:14px;color:var(--mid);margin-top:12px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.75;}
+.rule{width:42px;height:2px;background:var(--gold2);margin:14px auto 0;}
+
+/* ── CATEGORIES ── */
+.cats{padding:72px 52px;background:var(--white);}
+.cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.cat-card{position:relative;overflow:hidden;cursor:pointer;height:380px;}
+.cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1);}
+.cat-card:hover img{transform:scale(1.08);}
+.cat-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,12,12,.75) 0%,rgba(12,12,12,.08) 55%,transparent 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:26px 18px;text-align:center;}
+.cat-overlay .clabel{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:6px;}
+.cat-overlay .ctitle{font-family:'Playfair Display',serif;font-size:22px;color:var(--white);font-weight:700;margin-bottom:12px;}
+.cat-overlay .cbtn{border:1.5px solid rgba(255,255,255,.6);color:var(--white);background:transparent;padding:7px 20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:var(--tr);}
+.cat-card:hover .cbtn{background:var(--gold2);border-color:var(--gold2);color:var(--black);}
+
+/* ── FILTER TABS ── */
+.shop{padding:72px 52px;background:var(--light);}
+.ftabs{display:flex;flex-wrap:wrap;gap:0;justify-content:center;margin-bottom:44px;}
+.ftab{padding:10px 22px;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:500;cursor:pointer;border:1px solid rgba(184,151,44,.25);background:transparent;color:var(--mid);transition:var(--tr);margin:-1px 0 0 -1px;}
+.ftab.on,.ftab:hover{background:var(--black);color:var(--gold-light);border-color:var(--black);}
+
+/* ── PRODUCT GRID ── */
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+.pcard{background:var(--white);position:relative;overflow:hidden;transition:var(--tr);}
+.pcard:hover{box-shadow:var(--shadow);transform:translateY(-4px);}
+.pimg{position:relative;overflow:hidden;height:280px;background:#ede8df;}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+.pcard:hover .pimg img{transform:scale(1.06);}
+.pbadge{position:absolute;top:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;}
+.pbadge.new{background:var(--black);color:var(--gold-light);}
+.pbadge.sale{background:var(--red);color:var(--white);}
+.pbadge.hot{background:var(--gold2);color:var(--black);}
+.pactions{position:absolute;bottom:-56px;left:0;right:0;display:flex;transition:var(--tr);}
+.pcard:hover .pactions{bottom:0;}
+.atc{flex:1;background:var(--black);color:var(--gold-light);border:none;padding:13px;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:var(--tr);}
+.atc:hover{background:var(--gold2);color:var(--black);}
+.wbtn{width:44px;background:var(--white);border:none;cursor:pointer;color:var(--mid);font-size:14px;transition:var(--tr);}
+.wbtn:hover{background:var(--gold-pale);color:var(--gold);}
+.pinfo{padding:14px 14px 16px;}
+.pinfo .pcat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;}
+.pinfo .pname{font-family:'Playfair Display',serif;font-size:14px;color:var(--black);font-weight:600;margin-bottom:6px;line-height:1.3;}
+.pinfo .stars{color:var(--gold2);font-size:10px;margin-bottom:5px;}
+.pinfo .pprice{font-size:14px;font-weight:600;color:var(--black);}
+.pinfo .pprice .op{font-size:11px;color:var(--mid);text-decoration:line-through;margin-right:6px;font-weight:400;}
+.pinfo .pprice .sp{color:var(--red);}
+
+/* ── MID BANNER ── */
+.banner{height:420px;position:relative;overflow:hidden;display:flex;align-items:center;}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.banner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,12,.82) 0%,rgba(12,12,12,.25) 65%,transparent 100%);}
+.banner-content{position:relative;z-index:2;padding:0 72px;}
+.banner-content .tag{font-size:10px;letter-spacing:4px;color:var(--gold-light);text-transform:uppercase;font-weight:500;margin-bottom:14px;}
+.banner-content h2{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);color:var(--white);font-weight:900;line-height:1.1;margin-bottom:16px;}
+.banner-content p{color:rgba(255,255,255,.75);font-size:14px;margin-bottom:26px;max-width:380px;line-height:1.75;}
+
+/* ── PAYMENT ── */
+.pay-sec{padding:72px 52px;background:var(--dark);}
+.pay-sec .sh h2{color:var(--white);}
+.pay-sec .sh p{color:rgba(255,255,255,.5);}
+.pay-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:820px;margin:0 auto 52px;}
+.pcard2{background:var(--dark2);border:1px solid rgba(212,175,55,.12);padding:38px 36px;position:relative;overflow:hidden;}
+.pcard2::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold2);}
+.pcard2 .icon{width:54px;height:54px;background:rgba(212,175,55,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.pcard2 .icon i{font-size:22px;color:var(--gold2);}
+.pcard2 h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--white);margin-bottom:16px;}
+.pcard2 .row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+.pcard2 .row .lbl{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase;min-width:82px;margin-top:2px;}
+.pcard2 .row .val{font-size:17px;font-weight:600;color:var(--gold-light);letter-spacing:.5px;}
+.pcard2 .note{font-size:12px;color:rgba(255,255,255,.4);line-height:1.65;margin-top:16px;border-top:1px solid rgba(255,255,255,.06);padding-top:14px;}
+.steps-h{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);text-align:center;margin-bottom:28px;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.step{text-align:center;padding:26px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(212,175,55,.08);}
+.step-n{width:44px;height:44px;background:var(--gold2);color:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;margin:0 auto 14px;}
+.step h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:7px;}
+.step p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65;}
+
+/* ── FIND US ── */
+.findus{padding:72px 52px;background:var(--white);}
+.fu-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+.fu-map{height:400px;background:#e5dfd3;border:1px solid rgba(184,151,44,.2);overflow:hidden;}
+.fu-map iframe{width:100%;height:100%;border:0;}
+.ci{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(184,151,44,.12);}
+.ci:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.ci-icon{width:44px;height:44px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ci-icon i{color:var(--gold);font-size:16px;}
+.ci-text h4{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;margin-bottom:4px;}
+.ci-text p,.ci-text a{font-size:13px;color:var(--mid);line-height:1.65;}
+.ci-text a{color:var(--gold);text-decoration:none;}
+.hrs{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;margin-top:5px;}
+.hrs p{font-size:12px;color:var(--mid);}
+.hrs p span{color:var(--black);font-weight:600;}
+
+/* ── CART DRAWER ── */
+.cart-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1800;opacity:0;pointer-events:none;transition:opacity .3s;}
+.cart-bg.on{opacity:1;pointer-events:all;}
+.cart-drawer{position:fixed;top:0;right:-460px;width:420px;height:100vh;background:var(--white);z-index:1801;display:flex;flex-direction:column;transition:right .42s cubic-bezier(.4,0,.2,1);}
+.cart-bg.on .cart-drawer{right:0;}
+.cdh{padding:24px 28px;border-bottom:1px solid rgba(184,151,44,.15);display:flex;align-items:center;justify-content:space-between;}
+.cdh h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;}
+.cdh .cnt{font-size:12px;color:var(--gold);font-family:'DM Sans';}
+.cdc{background:none;border:none;font-size:18px;cursor:pointer;color:var(--mid);transition:var(--tr);}
+.cdc:hover{color:var(--black);}
+.cdi{flex:1;overflow-y:auto;padding:18px 28px;}
+.cempty{text-align:center;padding:60px 16px;}
+.cempty i{font-size:44px;color:var(--gold-pale);margin-bottom:14px;}
+.cempty p{color:var(--mid);font-size:14px;}
+.citem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.05);}
+.citem img{width:72px;height:88px;object-fit:cover;flex-shrink:0;}
+.citem-info .cin{font-family:'Playfair Display',serif;font-size:13px;font-weight:600;margin-bottom:3px;}
+.citem-info .cip{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:8px;}
+.qc{display:flex;align-items:center;}
+.qbtn{width:26px;height:26px;border:1px solid rgba(0,0,0,.14);background:none;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.qbtn:hover{background:var(--gold2);border-color:var(--gold2);color:var(--white);}
+.qnum{width:34px;height:26px;border-top:1px solid rgba(0,0,0,.14);border-bottom:1px solid rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;}
+.rmi{background:none;border:none;color:var(--mid);cursor:pointer;font-size:11px;text-decoration:underline;margin-top:6px;display:block;transition:var(--tr);}
+.rmi:hover{color:var(--red);}
+.cdf{padding:20px 28px;border-top:1px solid rgba(184,151,44,.15);background:var(--gold-pale);}
+.ctot{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.ctot .tl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);}
+.ctot .tv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;}
+.cobtn{width:100%;background:var(--black);color:var(--gold-light);border:none;padding:14px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:var(--tr);margin-bottom:10px;}
+.cobtn:hover{background:var(--gold2);color:var(--black);}
+.csbtn{width:100%;background:transparent;border:1px solid rgba(0,0,0,.14);color:var(--mid);padding:11px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:var(--tr);}
+.csbtn:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ── CHECKOUT MODAL ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:2800;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;}
+.modal-bg.on{opacity:1;pointer-events:all;}
+.modal-box{background:var(--white);width:92%;max-width:520px;max-height:92vh;overflow-y:auto;padding:44px 40px;position:relative;}
+.modal-box h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;margin-bottom:6px;}
+.modal-box .msub{font-size:13px;color:var(--mid);margin-bottom:28px;}
+.mclose{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--mid);}
+.fg{margin-bottom:18px;}
+.fg label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);font-weight:500;margin-bottom:7px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 15px;border:1px solid rgba(0,0,0,.14);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--black);background:var(--white);outline:none;transition:var(--tr);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold2);}
+.fg textarea{resize:vertical;}
+.popts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
+.popt{border:2px solid rgba(0,0,0,.1);padding:14px;cursor:pointer;text-align:center;transition:var(--tr);}
+.popt.sel{border-color:var(--gold2);background:var(--gold-pale);}
+.popt i{font-size:20px;color:var(--gold);margin-bottom:5px;display:block;}
+.popt span{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--black);}
+.pinst{background:var(--light);padding:14px;margin-bottom:22px;font-size:12px;color:var(--mid);line-height:1.7;}
+.pinst strong{color:var(--black);}
+.msubmit{width:100%;background:var(--black);color:var(--gold-light);border:none;padding:15px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:var(--tr);}
+.msubmit:hover{background:var(--gold2);color:var(--black);}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--black);color:var(--white);padding:14px 20px;display:flex;align-items:center;gap:10px;font-size:13px;max-width:300px;transform:translateY(70px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);}
+.toast.on{transform:translateY(0);opacity:1;}
+.toast i{color:var(--gold-light);font-size:15px;}
+
+/* ── MOB MENU ── */
+.mob-menu{position:fixed;inset:0;background:var(--black);z-index:1400;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;transform:translateX(-100%);transition:transform .4s ease;}
+.mob-menu.on{transform:translateX(0);}
+.mob-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--white);text-decoration:none;transition:var(--tr);}
+.mob-menu a:hover{color:var(--gold-light);}
+.mob-close{position:absolute;top:22px;right:22px;background:none;border:none;color:var(--white);font-size:22px;cursor:pointer;}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:60px 52px 28px;}
+.fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:44px;margin-bottom:44px;}
+.fb .bn{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);font-weight:900;}
+.fb .bt{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.fb p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.8;margin-bottom:22px;}
+.socials{display:flex;gap:10px;}
+.socials a{width:36px;height:36px;border:1px solid rgba(212,175,55,.25);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:var(--tr);font-size:14px;}
+.socials a:hover{background:var(--gold2);border-color:var(--gold2);color:var(--black);}
+.fcol h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;}
+.fcol ul{list-style:none;}
+.fcol ul li{margin-bottom:9px;}
+.fcol ul li a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.45);transition:var(--tr);}
+.fcol ul li a:hover{color:var(--gold-light);padding-left:4px;}
+.fcol p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.8;}
+.fbot{border-top:1px solid rgba(212,175,55,.08);padding-top:24px;display:flex;justify-content:space-between;}
+.fbot p{font-size:12px;color:rgba(255,255,255,.28);}
+.fbot span{color:var(--gold);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1200px){.pgrid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:1000px){.pgrid{grid-template-columns:repeat(3,1fr);}.cats-grid{grid-template-columns:repeat(2,1fr);}.fg2{grid-template-columns:1fr 1fr;gap:28px;}}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.ham{display:flex;}.hero-content{padding:0 28px;}.shop,.cats,.pay-sec,.findus{padding:52px 20px;}.fu-grid{grid-template-columns:1fr;}.steps{grid-template-columns:repeat(2,1fr);}.pay-cards{grid-template-columns:1fr;}.pgrid{grid-template-columns:repeat(2,1fr);gap:12px;}.pimg{height:230px;}.cats-grid{grid-template-columns:repeat(2,1fr);}.fg2{grid-template-columns:1fr;}.cart-drawer{width:100%;right:-100%;}}
+@media(max-width:480px){.pgrid{grid-template-columns:repeat(2,1fr);gap:10px;}.pimg{height:200px;}.steps{grid-template-columns:1fr 1fr;}.cats-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announce">
+  🚚 Free delivery within Nakuru CBD &nbsp;·&nbsp; <b>WhatsApp Orders: 0796 990 398</b> &nbsp;·&nbsp; New arrivals weekly ✨
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo-wrap">
+    <span class="brand">MANU CRUISE</span>
+    <span class="sub">Fashion Boutique · Nakuru</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#payment">Payment</a></li>
+    <li><a href="#findus">Find Us</a></li>
+  </ul>
+  <div class="nav-right">
+    <button title="Search"><i class="fas fa-search"></i></button>
+    <button onclick="openCart()" title="Cart">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="badge" id="cartBadge">0</span>
+    </button>
+    <button class="ham" onclick="openMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()"><i class="fas fa-times"></i></button>
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#collections" onclick="closeMob()">Collections</a>
+  <a href="#shop" onclick="closeMob()">Shop</a>
+  <a href="#payment" onclick="closeMob()">Payment</a>
+  <a href="#findus" onclick="closeMob()">Find Us</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div id="heroSlides">
+    <div class="hero-slide on" style="background-image:url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1600&q=85')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=85')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&q=85')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1479064555552-3ef4979f8908?w=1600&q=85')"></div>
+  </div>
+  <div class="hero-content">
+    <p class="eyebrow">New Season · 2025 Collection</p>
+    <h1>Style That <em>Speaks</em> For You</h1>
+    <p>Premium fashion for men, women & children. Clothes, shoes, belts, backpacks, gloves and more — all under one roof in the heart of Nakuru.</p>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-gold">Shop Now</a>
+      <a href="#collections" class="btn-ghost">View Collections</a>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <div class="dot on" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+    <div class="dot" onclick="goSlide(3)"></div>
+  </div>
+</section>
+
+<!-- Collections -->
+<section class="cats" id="collections">
+  <div class="sh">
+    <p class="eyebrow">Shop by Category</p>
+    <h2>Our Collections</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="cats-grid">
+    <div class="cat-card" onclick="filterTo('men')">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80" alt="Men's Fashion" loading="lazy">
+      <div class="cat-overlay"><span class="clabel">For Him</span><h3 class="ctitle">Men's Wear</h3><button class="cbtn">Explore</button></div>
+    </div>
+    <div class="cat-card" onclick="filterTo('women')">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="Women's Fashion" loading="lazy">
+      <div class="cat-overlay"><span class="clabel">For Her</span><h3 class="ctitle">Women's Wear</h3><button class="cbtn">Explore</button></div>
+    </div>
+    <div class="cat-card" onclick="filterTo('children')">
+      <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=600&q=80" alt="Children's Wear" loading="lazy">
+      <div class="cat-overlay"><span class="clabel">Little Ones</span><h3 class="ctitle">Kids' Wear</h3><button class="cbtn">Explore</button></div>
+    </div>
+    <div class="cat-card" onclick="filterTo('footwear')">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Footwear" loading="lazy">
+      <div class="cat-overlay"><span class="clabel">Step In Style</span><h3 class="ctitle">Footwear</h3><button class="cbtn">Explore</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop -->
+<section class="shop" id="shop">
+  <div class="sh">
+    <p class="eyebrow">Window Shopping</p>
+    <h2>Browse All Products</h2>
+    <div class="rule"></div>
+    <p>Scroll through our full collection — clothes, shoes, belts, backpacks, gloves & accessories for every taste and budget.</p>
+  </div>
+  <div class="ftabs">
+    <button class="ftab on" onclick="filterTo('all',this)">All Items</button>
+    <button class="ftab" onclick="filterTo('men',this)">Men</button>
+    <button class="ftab" onclick="filterTo('women',this)">Women</button>
+    <button class="ftab" onclick="filterTo('children',this)">Children</button>
+    <button class="ftab" onclick="filterTo('footwear',this)">Footwear</button>
+    <button class="ftab" onclick="filterTo('belts',this)">Belts</button>
+    <button class="ftab" onclick="filterTo('backpacks',this)">Backpacks</button>
+    <button class="ftab" onclick="filterTo('gloves',this)">Gloves</button>
+    <button class="ftab" onclick="filterTo('accessories',this)">Accessories</button>
+  </div>
+  <div class="pgrid" id="grid"></div>
+</section>
+
+<!-- Mid Banner – Footwear -->
+<div class="banner">
+  <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1600&q=80" alt="Footwear Collection" loading="lazy">
+  <div class="banner-content">
+    <p class="tag">Trending Now</p>
+    <h2>Every Step<br>in Style</h2>
+    <p>From casual sneakers to elegant heels and sturdy boots — footwear for every occasion, age and budget.</p>
+    <button class="btn-gold" onclick="filterTo('footwear',null);document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Footwear</button>
+  </div>
+</div>
+
+<!-- Mid Banner – Backpacks -->
+<div class="banner" style="height:360px;">
+  <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1600&q=80" alt="Bags & Backpacks" loading="lazy">
+  <div class="banner-content">
+    <p class="tag">Bags & Backpacks</p>
+    <h2>Carry It<br>with Class</h2>
+    <p>School bags, travel packs, fashion backpacks — built to carry everything you need.</p>
+    <button class="btn-gold" onclick="filterTo('backpacks',null);document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Backpacks</button>
+  </div>
+</div>
+
+<!-- Payment -->
+<section class="pay-sec" id="payment">
+  <div class="sh">
+    <p class="eyebrow">Safe & Easy</p>
+    <h2>Payment Methods</h2>
+    <div class="rule"></div>
+    <p>Two convenient ways to pay — fast, secure and confirmed instantly.</p>
+  </div>
+  <div class="pay-cards">
+    <div class="pcard2">
+      <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+      <h3>M-PESA</h3>
+      <div class="row"><span class="lbl">Method</span><span class="val">Send Money</span></div>
+      <div class="row"><span class="lbl">Number</span><span class="val">0796 990 398</span></div>
+      <div class="row"><span class="lbl">Name</span><span class="val">Manu Cruise Fashion</span></div>
+      <p class="note">M-PESA → Send Money → Enter <b style="color:var(--gold-light)">0796990398</b> → Amount → Confirm PIN. Screenshot confirmation → WhatsApp us.</p>
+    </div>
+    <div class="pcard2">
+      <div class="icon"><i class="fas fa-university"></i></div>
+      <h3>KCB Bank Pay</h3>
+      <div class="row"><span class="lbl">Paybill</span><span class="val">522522</span></div>
+      <div class="row"><span class="lbl">Account</span><span class="val">1305444108</span></div>
+      <div class="row"><span class="lbl">Bank</span><span class="val">KCB Bank Kenya</span></div>
+      <p class="note">M-PESA → Lipa na M-PESA → Pay Bill → Paybill: <b style="color:var(--gold-light)">522522</b> → Account: <b style="color:var(--gold-light)">1305444108</b> → Amount → PIN. WhatsApp confirmation.</p>
+    </div>
+  </div>
+  <p class="steps-h">How to Order &amp; Pay — 4 Easy Steps</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h4>Browse & Pick</h4><p>Scroll through our collection, choose your items, size and color — click "Add to Bag."</p></div>
+    <div class="step"><div class="step-n">2</div><h4>Go to Cart</h4><p>Review your selected items in your bag and click "Proceed to Checkout."</p></div>
+    <div class="step"><div class="step-n">3</div><h4>Pay Securely</h4><p>Pay via M-PESA <b style="color:var(--gold-light)">0796990398</b> or KCB Paybill <b style="color:var(--gold-light)">522522</b> Acc: <b style="color:var(--gold-light)">1305444108</b>.</p></div>
+    <div class="step"><div class="step-n">4</div><h4>Confirm & Deliver</h4><p>WhatsApp your payment screenshot. We dispatch within 24 hours across Nakuru!</p></div>
+  </div>
+</section>
+
+<!-- Find Us -->
+<section class="findus" id="findus">
+  <div class="sh">
+    <p class="eyebrow">Come Visit</p>
+    <h2>How to Find Us</h2>
+    <div class="rule"></div>
+    <p>Located in Nakuru City. Visit us in-store or order online via WhatsApp!</p>
+  </div>
+  <div class="fu-grid">
+    <div class="fu-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7!2d36.0800!3d-0.2840!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182972dc63fb0da1%3A0x5c3dd98c6f3e6e20!2sNakuru%2C%20Kenya!5e0!3m2!1sen!2ske!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div>
+      <div class="ci"><div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div><div class="ci-text"><h4>Our Location</h4><p>Manu Cruise Fashion Boutique<br>Nakuru City Centre, Nakuru County, Kenya</p></div></div>
+      <div class="ci"><div class="ci-icon"><i class="fab fa-whatsapp"></i></div><div class="ci-text"><h4>WhatsApp Orders</h4><p><a href="https://wa.me/254796990398">+254 796 990 398</a> — Chat to place your order</p></div></div>
+      <div class="ci"><div class="ci-icon"><i class="fas fa-phone"></i></div><div class="ci-text"><h4>Call Us</h4><p><a href="tel:+254796990398">0796 990 398</a></p></div></div>
+      <div class="ci"><div class="ci-icon"><i class="fas fa-clock"></i></div><div class="ci-text"><h4>Business Hours</h4><div class="hrs"><p><span>Mon–Fri:</span> 8am – 7pm</p><p><span>Saturday:</span> 8am – 8pm</p><p><span>Sunday:</span> 10am – 5pm</p><p><span>Holidays:</span> 10am – 4pm</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="fg2">
+    <div class="fb">
+      <div class="bn">MANU CRUISE</div>
+      <div class="bt">Fashion Boutique · Nakuru</div>
+      <p>Your go-to boutique for quality clothing, footwear, accessories, bags and gloves for men, women & children. Proudly based in Nakuru City, Kenya.</p>
+      <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/254796990398"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="fcol"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#collections">Collections</a></li><li><a href="#shop">Shop All</a></li><li><a href="#payment">How to Pay</a></li><li><a href="#findus">Find Us</a></li></ul></div>
+    <div class="fcol"><h4>Categories</h4><ul><li><a href="#">Men's Clothing</a></li><li><a href="#">Women's Clothing</a></li><li><a href="#">Children's Wear</a></li><li><a href="#">Footwear</a></li><li><a href="#">Belts & Accessories</a></li><li><a href="#">Backpacks & Bags</a></li><li><a href="#">Gloves</a></li></ul></div>
+    <div class="fcol"><h4>Contact</h4><p>📍 Nakuru City Centre, Kenya</p><br><p>📱 <a href="tel:+254796990398" style="color:var(--gold-light)">0796 990 398</a></p><br><p>💬 <a href="https://wa.me/254796990398" style="color:var(--gold-light)">WhatsApp Us</a></p><br><p>💳 M-PESA: <b style="color:var(--gold-light)">0796990398</b></p><p>🏦 KCB Paybill: <b style="color:var(--gold-light)">522522</b></p><p>   Acc: <b style="color:var(--gold-light)">1305444108</b></p></div>
+  </div>
+  <div class="fbot"><p>© 2025 <span>Manu Cruise Fashion Boutique</span>. All Rights Reserved.</p><p>Made with <span>♥</span> in Nakuru, Kenya</p></div>
+</footer>
+
+<!-- Cart Drawer -->
+<div class="cart-bg" id="cartBg" onclick="handleCartClick(event)">
+  <div class="cart-drawer">
+    <div class="cdh">
+      <div><h3>Shopping Bag</h3><span class="cnt" id="cartHeader">0 items</span></div>
+      <button class="cdc" onclick="closeCart()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cdi" id="cartItems"><div class="cempty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.<br>Start shopping!</p></div></div>
+    <div id="cartFoot" style="display:none">
+      <div class="cdf">
+        <div class="ctot"><span class="tl">Total Amount</span><span class="tv" id="cartTotal">KSh 0</span></div>
+        <button class="cobtn" onclick="openCheckout()">Proceed to Checkout</button>
+        <button class="csbtn" onclick="closeCart()">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal-bg" id="modalBg" onclick="handleModalClick(event)">
+  <div class="modal-box">
+    <button class="mclose" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+    <h2>Checkout</h2>
+    <p class="msub">Fill in your details and choose payment method.</p>
+    <div class="fg"><label>Full Name</label><input type="text" id="coName" placeholder="Your full name"></div>
+    <div class="fg"><label>Phone Number</label><input type="tel" id="coPhone" placeholder="07XX XXX XXX"></div>
+    <div class="fg"><label>Delivery Location</label><input type="text" id="coLoc" placeholder="e.g. Nakuru CBD, Section 58, Milimani..."></div>
+    <div class="fg"><label>Order Notes (Size, color, etc.)</label><textarea id="coNotes" rows="3" placeholder="Specify sizes, colors or any special requests..."></textarea></div>
+    <label style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);font-weight:500;display:block;margin-bottom:10px;">Payment Method</label>
+    <div class="popts">
+      <div class="popt sel" id="po1" onclick="selPay(1)"><i class="fas fa-mobile-alt"></i><span>M-PESA<br><small style="font-size:9px;text-transform:none;letter-spacing:0;color:#888;">0796 990 398</small></span></div>
+      <div class="popt" id="po2" onclick="selPay(2)"><i class="fas fa-university"></i><span>KCB Paybill<br><small style="font-size:9px;text-transform:none;letter-spacing:0;color:#888;">522522 / 1305444108</small></span></div>
+    </div>
+    <div class="pinst" id="pinst"><strong>M-PESA Instructions:</strong><br>M-PESA → Send Money → Number: <strong>0796990398</strong><br>Confirm with PIN, then WhatsApp us your screenshot.</div>
+    <button class="msubmit" onclick="submitOrder()"><i class="fab fa-whatsapp" style="margin-right:7px;font-size:14px;"></i>Confirm Order via WhatsApp</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Added to bag!</span></div>
+
+<script>
+// ===================== PRODUCTS =====================
+const products = [
+  // ── MEN'S CLOTHING ──
+  {id:1, name:"Classic Oxford Shirt", cat:"men", sub:"Men's Clothing", price:1800, img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&q=80", badge:"new", rating:5},
+  {id:2, name:"Slim Fit Chinos", cat:"men", sub:"Men's Clothing", price:2500, img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&q=80", badge:"", rating:4},
+  {id:3, name:"Men's Formal Suit", cat:"men", sub:"Men's Clothing", price:7500, img:"https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=500&q=80", badge:"hot", rating:5},
+  {id:4, name:"Men's Polo Shirt", cat:"men", sub:"Men's Clothing", price:1200, img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80", badge:"", rating:4},
+  {id:5, name:"Men's Zip Hoodie", cat:"men", sub:"Men's Clothing", price:2800, img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80", badge:"", rating:4},
+  {id:6, name:"Men's Denim Jacket", cat:"men", sub:"Men's Clothing", price:3500, img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&q=80", badge:"new", rating:5},
+  {id:7, name:"Graphic T-Shirt", cat:"men", sub:"Men's Clothing", price:900, img:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&q=80", badge:"", rating:4},
+  {id:8, name:"Men's Jogger Pants", cat:"men", sub:"Men's Clothing", price:2200, img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&q=80", badge:"", rating:4},
+  {id:9, name:"Men's Bomber Jacket", cat:"men", sub:"Men's Clothing", price:4500, img:"https://images.unsplash.com/photo-1551537832-f17fdb8f4ac?w=500&q=80", badge:"sale", oldPrice:5800, rating:5},
+  {id:10, name:"Men's Linen Shirt", cat:"men", sub:"Men's Clothing", price:1600, img:"https://images.unsplash.com/photo-1620799140408-edb6952df1c4?w=500&q=80", badge:"new", rating:4},
+
+  // ── WOMEN'S CLOTHING ──
+  {id:11, name:"Elegant Floral Dress", cat:"women", sub:"Women's Clothing", price:3200, img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80", badge:"new", rating:5},
+  {id:12, name:"Casual Blouse Top", cat:"women", sub:"Women's Clothing", price:1600, img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80", badge:"", rating:4},
+  {id:13, name:"Maxi Wrap Dress", cat:"women", sub:"Women's Clothing", price:2900, img:"https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=500&q=80", badge:"", rating:5},
+  {id:14, name:"Bodycon Evening Dress", cat:"women", sub:"Women's Clothing", price:3800, img:"https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=500&q=80", badge:"hot", rating:5},
+  {id:15, name:"Women's Smart Blazer", cat:"women", sub:"Women's Clothing", price:4200, img:"https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80", badge:"", rating:4},
+  {id:16, name:"Pleated Mini Skirt", cat:"women", sub:"Women's Clothing", price:1400, img:"https://images.unsplash.com/photo-1583496661160-fb5218310737?w=500&q=80", badge:"", rating:4},
+  {id:17, name:"Women's Jumpsuit", cat:"women", sub:"Women's Clothing", price:3500, img:"https://images.unsplash.com/photo-1554412933-514a83d2f3c8?w=500&q=80", badge:"new", rating:5},
+  {id:18, name:"Flowy Summer Top", cat:"women", sub:"Women's Clothing", price:1100, img:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=500&q=80", badge:"", rating:4},
+  {id:19, name:"Women's Trench Coat", cat:"women", sub:"Women's Clothing", price:5500, img:"https://images.unsplash.com/photo-1548624313-0396c75e4b1a?w=500&q=80", badge:"", rating:5},
+  {id:20, name:"Knit Cardigan", cat:"women", sub:"Women's Clothing", price:2200, img:"https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=500&q=80", badge:"sale", oldPrice:2900, rating:4},
+
+  // ── CHILDREN'S WEAR ──
+  {id:21, name:"Kids Denim Jacket", cat:"children", sub:"Children's Wear", price:1400, img:"https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=500&q=80", badge:"new", rating:5},
+  {id:22, name:"Girls Floral Dress", cat:"children", sub:"Children's Wear", price:1200, img:"https://images.unsplash.com/photo-1476234251651-f353703a034d?w=500&q=80", badge:"", rating:5},
+  {id:23, name:"Boys Casual T-Shirt Set", cat:"children", sub:"Children's Wear", price:1800, img:"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=500&q=80", badge:"", rating:4},
+  {id:24, name:"Kids Graphic Hoodie", cat:"children", sub:"Children's Wear", price:1600, img:"https://images.unsplash.com/photo-1514090458221-65bb651e77a4?w=500&q=80", badge:"new", rating:4},
+  {id:25, name:"Girls Skirt & Top Set", cat:"children", sub:"Children's Wear", price:1300, img:"https://images.unsplash.com/photo-1518831959646-742c3a14ebf8?w=500&q=80", badge:"", rating:5},
+  {id:26, name:"Boys Shorts & Shirt", cat:"children", sub:"Children's Wear", price:1100, img:"https://images.unsplash.com/photo-1555009393-f20bdb245c4d?w=500&q=80", badge:"", rating:4},
+  {id:27, name:"Kids School Uniform Set", cat:"children", sub:"Children's Wear", price:2200, img:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=500&q=80", badge:"hot", rating:5},
+
+  // ── FOOTWEAR ──
+  {id:28, name:"White Canvas Sneakers", cat:"footwear", sub:"Footwear", price:3500, img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80", badge:"", rating:5},
+  {id:29, name:"Ladies Block Heels", cat:"footwear", sub:"Footwear", price:2800, img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&q=80", badge:"sale", oldPrice:3600, rating:4},
+  {id:30, name:"Kids Colourful Sneakers", cat:"footwear", sub:"Footwear", price:1800, img:"https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80", badge:"new", rating:5},
+  {id:31, name:"Men's Leather Loafers", cat:"footwear", sub:"Footwear", price:3200, img:"https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=500&q=80", badge:"", rating:4},
+  {id:32, name:"Women's Strappy Sandals", cat:"footwear", sub:"Footwear", price:2200, img:"https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=500&q=80", badge:"", rating:4},
+  {id:33, name:"Men's Ankle Boots", cat:"footwear", sub:"Footwear", price:4500, img:"https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500&q=80", badge:"new", rating:5},
+  {id:34, name:"Women's Chelsea Boots", cat:"footwear", sub:"Footwear", price:3900, img:"https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=500&q=80", badge:"", rating:5},
+  {id:35, name:"Men's Running Shoes", cat:"footwear", sub:"Footwear", price:4200, img:"https://images.unsplash.com/photo-1595950653106-bac8a5d84a9e?w=500&q=80", badge:"hot", rating:5},
+  {id:36, name:"Girls Ballet Flats", cat:"footwear", sub:"Footwear", price:1600, img:"https://images.unsplash.com/photo-1596703263926-eb0762ee17e4?w=500&q=80", badge:"", rating:4},
+  {id:37, name:"Men's Oxford Dress Shoes", cat:"footwear", sub:"Footwear", price:3800, img:"https://images.unsplash.com/photo-1614252235316-8c857196f400?w=500&q=80", badge:"new", rating:5},
+
+  // ── BELTS ──
+  {id:38, name:"Premium Leather Belt", cat:"belts", sub:"Belts", price:900, img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80", badge:"", rating:4},
+  {id:39, name:"Woven Fabric Belt", cat:"belts", sub:"Belts", price:750, img:"https://images.unsplash.com/photo-1624623278313-a930126a11c3?w=500&q=80", badge:"", rating:4},
+  {id:40, name:"Women's Thin Waist Belt", cat:"belts", sub:"Belts", price:650, img:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&q=80", badge:"new", rating:4},
+  {id:41, name:"Men's Double-Ring Belt", cat:"belts", sub:"Belts", price:1100, img:"https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?w=500&q=80", badge:"", rating:5},
+
+  // ── BACKPACKS ──
+  {id:42, name:"Men's Travel Backpack", cat:"backpacks", sub:"Bags & Backpacks", price:3500, img:"https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=500&q=80", badge:"new", rating:5},
+  {id:43, name:"Women's Fashion Backpack", cat:"backpacks", sub:"Bags & Backpacks", price:2800, img:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80", badge:"", rating:5},
+  {id:44, name:"Kids School Backpack", cat:"backpacks", sub:"Bags & Backpacks", price:1500, img:"https://images.unsplash.com/photo-1563170351-be31e6f2e6c6?w=500&q=80", badge:"hot", rating:5},
+  {id:45, name:"Laptop Backpack 15.6\"", cat:"backpacks", sub:"Bags & Backpacks", price:3200, img:"https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=500&q=80", badge:"new", rating:5},
+  {id:46, name:"Mini Fashion Backpack", cat:"backpacks", sub:"Bags & Backpacks", price:1800, img:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=500&q=80", badge:"", rating:4},
+  {id:47, name:"Sports Gym Backpack", cat:"backpacks", sub:"Bags & Backpacks", price:2500, img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80", badge:"", rating:4},
+  {id:48, name:"Waterproof Hiking Pack", cat:"backpacks", sub:"Bags & Backpacks", price:4200, img:"https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=500&q=80", badge:"new", rating:5},
+
+  // ── GLOVES ──
+  {id:49, name:"Men's Leather Gloves", cat:"gloves", sub:"Gloves", price:1200, img:"https://images.unsplash.com/photo-1545571651-6da35d0732b6?w=500&q=80", badge:"", rating:4},
+  {id:50, name:"Winter Wool Gloves", cat:"gloves", sub:"Gloves", price:800, img:"https://images.unsplash.com/photo-1547585323-cd60f74eb56e?w=500&q=80", badge:"", rating:4},
+  {id:51, name:"Women's Fashion Gloves", cat:"gloves", sub:"Gloves", price:950, img:"https://images.unsplash.com/photo-1512918580421-b2e705c9b1c0?w=500&q=80", badge:"new", rating:4},
+  {id:52, name:"Kids Warm Mittens", cat:"gloves", sub:"Gloves", price:550, img:"https://images.unsplash.com/photo-1478479405421-ce83c92fb3ba?w=500&q=80", badge:"", rating:5},
+
+  // ── ACCESSORIES ──
+  {id:53, name:"Classic Baseball Cap", cat:"accessories", sub:"Accessories", price:700, img:"https://images.unsplash.com/photo-1588850561407-ed78c207de7e?w=500&q=80", badge:"", rating:4},
+  {id:54, name:"Winter Beanie Hat", cat:"accessories", sub:"Accessories", price:600, img:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=500&q=80", badge:"", rating:4},
+  {id:55, name:"Fashion Scarf", cat:"accessories", sub:"Accessories", price:850, img:"https://images.unsplash.com/photo-1601924357840-d8d97e87c94b?w=500&q=80", badge:"new", rating:5},
+  {id:56, name:"Men's Flat Cap", cat:"accessories", sub:"Accessories", price:900, img:"https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&q=80", badge:"", rating:4},
+];
+
+// ===================== STATE =====================
+let cart = [];
+let curFilter = 'all';
+
+// ===================== RENDER =====================
+function renderGrid(filter) {
+  curFilter = filter;
+  const grid = document.getElementById('grid');
+  const items = filter === 'all' ? products : products.filter(p => p.category === filter || p.cat === filter);
+  if (!items.length) { grid.innerHTML = '<p style="text-align:center;color:var(--mid);padding:40px;grid-column:1/-1;">No items found in this category.</p>'; return; }
+  grid.innerHTML = items.map(p => {
+    const stars = '★'.repeat(p.rating || 4) + '☆'.repeat(5-(p.rating||4));
+    const priceHTML = p.oldPrice
+      ? `<span class="op">KSh ${p.oldPrice.toLocaleString()}</span><span class="sp">KSh ${p.price.toLocaleString()}</span>`
+      : `KSh ${p.price.toLocaleString()}`;
+    const badge = p.badge ? `<span class="pbadge ${p.badge}">${p.badge.toUpperCase()}</span>` : '';
+    return `<div class="pcard">
+      <div class="pimg">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=500&q=60'">
+        ${badge}
+        <div class="pactions">
+          <button class="atc" onclick="addToCart(${p.id})">Add to Bag</button>
+          <button class="wbtn" title="Wishlist"><i class="far fa-heart"></i></button>
+        </div>
+      </div>
+      <div class="pinfo">
+        <p class="pcat">${p.sub}</p>
+        <p class="pname">${p.name}</p>
+        <div class="stars">${stars}</div>
+        <div class="pprice">${priceHTML}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterTo(f, btn) {
+  renderGrid(f);
+  if (btn) { document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on')); btn.classList.add('on'); }
+  else { document.querySelectorAll('.ftab').forEach(t=>{ if(t.textContent.toLowerCase().includes(f)||( f==='all'&&t.textContent.includes('All'))) t.classList.add('on'); else t.classList.remove('on'); }); }
+}
+
+renderGrid('all');
+
+// ===================== CART =====================
+function addToCart(id) {
+  const p = products.find(x=>x.id===id);
+  const ex = cart.find(x=>x.id===id);
+  if(ex) ex.qty++; else cart.push({...p, qty:1});
+  updateCartUI();
+  showToast(`"${p.name}" added to your bag!`);
+}
+function removeFromCart(id){ cart=cart.filter(x=>x.id!==id); updateCartUI(); }
+function changeQty(id,d){
+  const it=cart.find(x=>x.id===id);
+  if(!it) return;
+  it.qty+=d;
+  if(it.qty<=0) cart=cart.filter(x=>x.id!==id);
+  updateCartUI();
+}
+function updateCartUI(){
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('cartBadge').textContent=count;
+  document.getElementById('cartHeader').textContent=`${count} item${count!==1?'s':''}`;
+  document.getElementById('cartTotal').textContent=`KSh ${total.toLocaleString()}`;
+  const ci=document.getElementById('cartItems');
+  const cf=document.getElementById('cartFoot');
+  if(!cart.length){
+    ci.innerHTML='<div class="cempty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.<br>Start shopping!</p></div>';
+    cf.style.display='none';
+  } else {
+    cf.style.display='block';
+    ci.innerHTML=cart.map(it=>`
+      <div class="citem">
+        <img src="${it.img}" alt="${it.name}">
+        <div class="citem-info" style="flex:1">
+          <p class="cin">${it.name}</p>
+          <p class="cip">KSh ${it.price.toLocaleString()}</p>
+          <div class="qc">
+            <button class="qbtn" onclick="changeQty(${it.id},-1)">−</button>
+            <div class="qnum">${it.qty}</div>
+            <button class="qbtn" onclick="changeQty(${it.id},1)">+</button>
+          </div>
+          <button class="rmi" onclick="removeFromCart(${it.id})">Remove</button>
+        </div>
+      </div>`).join('');
+  }
+}
+function openCart(){ document.getElementById('cartBg').classList.add('on'); }
+function closeCart(){ document.getElementById('cartBg').classList.remove('on'); }
+function handleCartClick(e){ if(e.target===document.getElementById('cartBg')) closeCart(); }
+
+// ===================== CHECKOUT =====================
+function openCheckout(){ closeCart(); setTimeout(()=>document.getElementById('modalBg').classList.add('on'),300); }
+function closeCheckout(){ document.getElementById('modalBg').classList.remove('on'); }
+function handleModalClick(e){ if(e.target===document.getElementById('modalBg')) closeCheckout(); }
+
+let selPayChoice = 1;
+function selPay(n){
+  selPayChoice=n;
+  document.getElementById('po1').classList.toggle('sel',n===1);
+  document.getElementById('po2').classList.toggle('sel',n===2);
+  document.getElementById('pinst').innerHTML = n===1
+    ? '<strong>M-PESA Instructions:</strong><br>M-PESA → Send Money → Number: <strong>0796990398</strong><br>Confirm with PIN, then WhatsApp us your screenshot.'
+    : '<strong>KCB Paybill Instructions:</strong><br>M-PESA → Lipa na M-PESA → Pay Bill → Paybill: <strong>522522</strong><br>Account: <strong>1305444108</strong> → Amount → PIN. WhatsApp screenshot.';
+}
+function submitOrder(){
+  const name=document.getElementById('coName').value.trim();
+  const phone=document.getElementById('coPhone').value.trim();
+  const loc=document.getElementById('coLoc').value.trim();
+  const notes=document.getElementById('coNotes').value.trim();
+  if(!name||!phone){ showToast('Please enter your name & phone number.'); return; }
+  const pm = selPayChoice===1 ? 'M-PESA to 0796990398' : 'KCB Paybill 522522, Account 1305444108';
+  const items = cart.map(i=>`• ${i.name} x${i.qty} = KSh ${(i.price*i.qty).toLocaleString()}`).join('%0A');
+  const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const msg = `Hello Manu Cruise Fashion! 🛍️%0A%0A*NEW ORDER*%0A%0AName: ${name}%0APhone: ${phone}%0ALocation: ${loc||'Not specified'}%0A%0A*Items Ordered:*%0A${items}%0A%0A*TOTAL: KSh ${total.toLocaleString()}*%0APayment Method: ${pm}%0ANotes: ${notes||'None'}`;
+  window.open(`https://wa.me/254796990398?text=${msg}`, '_blank');
+  closeCheckout();
+  cart=[];
+  updateCartUI();
+  showToast('Order sent via WhatsApp! 🎉');
+}
+
+// ===================== HERO SLIDER =====================
+let si=0;
+const slides=document.querySelectorAll('.hero-slide');
+const dots=document.querySelectorAll('.dot');
+function goSlide(n){
+  slides[si].classList.remove('on');dots[si].classList.remove('on');
+  si=n; slides[si].classList.add('on');dots[si].classList.add('on');
+}
+setInterval(()=>goSlide((si+1)%slides.length),5500);
+
+// ===================== MOBILE MENU =====================
+function openMob(){ document.getElementById('mobMenu').classList.add('on'); }
+function closeMob(){ document.getElementById('mobMenu').classList.remove('on'); }
+
+// ===================== TOAST =====================
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),3500);
+}
+</script>
+</body>
+</html>
